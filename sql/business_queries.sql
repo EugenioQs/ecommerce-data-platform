@@ -127,3 +127,39 @@ JOIN dim_country c
 ON f.country_id = c.country_id
 GROUP BY c.country_name
 ORDER BY total_orders DESC;
+
+/* ========================================
+9. Repeat vs One-Time Customers
+Business Question:
+What percentage of customers are repeat buyers?
+======================================== */
+
+SELECT
+    CASE
+        WHEN order_count = 1 THEN 'One-Time Customer'
+        ELSE 'Repeat Customer'
+    END AS customer_type,
+    COUNT(*) AS customer_count
+FROM (
+    SELECT
+        customer_id,
+        COUNT(DISTINCT invoice_no) AS order_count
+    FROM fact_sales
+    GROUP BY customer_id
+) customer_orders
+GROUP BY customer_type;
+
+/* ========================================
+10. Customer Lifetime Value
+Business Question:
+How much revenue does each customer generate?
+======================================== */
+
+SELECT
+    customer_id,
+    COUNT(DISTINCT invoice_no) AS total_orders,
+    SUM(revenue) AS lifetime_value
+FROM fact_sales
+GROUP BY customer_id
+ORDER BY lifetime_value DESC
+LIMIT 10;
