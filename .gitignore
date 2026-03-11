@@ -1,14 +1,41 @@
+# =========================
 # Python
+# =========================
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
-# Large datasets
-datasets/fact_sales.csv
+# Virtual environments
+venv/
+.env/
 
-# Raw Data
-datasets/online_retail.csv
-datasets/orders.csv
+# =========================
+# Datasets
+# =========================
 
-# OS
+# Ignore raw datasets
+datasets/raw/
+
+# Ignore processed datasets
+datasets/processed/
+
+# Allow sample datasets
+!datasets/sample/
+
+# =========================
+# Jupyter (if used later)
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# OS files
+# =========================
 .DS_Store
 Thumbs.db
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
