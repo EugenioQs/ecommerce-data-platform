@@ -2,8 +2,12 @@
 __pycache__/
 *.pyc
 
-# Data
-fact_sales.csv
+# Large datasets
+datasets/fact_sales.csv
+
+# Raw Data
+datasets/online_retail.csv
+datasets/orders.csv
 
 # OS
 .DS_Store
