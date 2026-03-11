@@ -4,11 +4,47 @@
 
 This project simulates a real-world **data analytics workflow** by transforming raw transactional data into a structured **data warehouse** designed for business intelligence and analytical queries.
 
-The goal of this project is to demonstrate how raw operational data can be transformed into a structured model that supports decision-making.
+The goal of this project is to demonstrate how raw operational data can be transformed into a structured model that supports business decision-making.
 
 The project covers the full analytics pipeline:
 
 Raw Data → Data Cleaning → Data Modeling → Data Warehouse → Business Analysis
+
+---
+
+## Business Case
+
+This project is based on a simulated e-commerce analytics scenario.
+
+The full business context and objectives can be found here:
+
+[View the Business Case](business_case.md)
+
+---
+
+## Key Business Insights
+
+Using the data warehouse and SQL analytics layer, several key insights can be extracted from the e-commerce dataset.
+
+### Revenue Performance
+
+The platform generates revenue across multiple international markets. By aggregating sales by country, it is possible to identify which regions contribute the most to total revenue and where expansion opportunities may exist.
+
+### Product Performance
+
+Analysis of product sales reveals that a small subset of products drives the majority of sales volume and revenue. This suggests the presence of high-demand products that may benefit from inventory prioritization and targeted promotions.
+
+### Customer Value
+
+Customer lifetime value analysis shows that a limited number of customers contribute significantly to total revenue. Identifying and retaining these high-value customers is essential for long-term profitability.
+
+### Customer Retention
+
+By comparing repeat customers versus one-time buyers, the dataset allows the measurement of customer retention. A higher proportion of repeat buyers indicates stronger customer loyalty and healthier long-term growth.
+
+### Sales Trends Over Time
+
+Monthly revenue trends allow the business to identify seasonality patterns and periods of increased demand, enabling better planning for inventory, marketing campaigns, and staffing.
 
 ---
 
@@ -117,17 +153,17 @@ Columns:
 
 This project uses a combination of data engineering and analytics tools:
 
-Python
-Pandas
-MySQL
-SQL
-Git / GitHub
+- Python
+- Pandas
+- MySQL
+- SQL
+- Git / GitHub
 
 Future improvements may include:
 
-Power BI or Tableau
-dbt transformations
-Cloud data warehouse (Redshift / BigQuery / Snowflake)
+- Power BI or Tableau dashboards
+- dbt transformations
+- Cloud data warehouse (Redshift / BigQuery / Snowflake)
 
 ---
 
@@ -137,26 +173,25 @@ Cloud data warehouse (Redshift / BigQuery / Snowflake)
 ecommerce-data-platform
 │
 ├── assets
-│   └── star_schema.png
+│   ├── pipeline_architecture.png
+│   └── star_schema_ecommerce.png
 │
 ├── datasets
-│   └── online_retail.xlsx
-│
-├── data
-│   ├── dim_products.csv
-│   ├── dim_customers.csv
-│   ├── dim_country.csv
-│   ├── dim_date.csv
-│   └── fact_sales_sample.csv
+│   └── sample
+│       └── fact_sales_sample.csv
 │
 ├── python
 │   ├── prepare_data.py
-│   └── build_star_schema.py
+│   ├── build_star_schema.py
+│   ├── fix_customers_csv.py
+│   ├── profile_data.py
+│   └── fact_sales_sample.py
 │
 ├── sql
 │   ├── create_tables.sql
-│   └── analytics_queries.sql
+│   └── business_queries.sql
 │
+├── business_case.md
 └── README.md
 ```
 
