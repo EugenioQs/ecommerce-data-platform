@@ -3,10 +3,19 @@ import pandas as pd
 print("Loading dataset...")
 
 # Load dataset
-df = pd.read_csv("../datasets/orders.csv")
+df = pd.read_csv("../datasets/raw/orders.csv")
 
-# Convert date column
+# Remove rows without customer id
+df = df.dropna(subset=["customerid"])
+
+# Convert customer id to integer
+df["customerid"] = df["customerid"].astype(int)
+
+# Convert invoice date to datetime
 df["invoicedate"] = pd.to_datetime(df["invoicedate"])
+
+# Create clean date column (remove time)
+df["date"] = pd.to_datetime(df["invoicedate"]).dt.normalize()
 
 # Create revenue column
 df["revenue"] = df["quantity"] * df["unitprice"]
@@ -43,15 +52,15 @@ dim_country = dim_country[["country_id", "country"]]
 # -----------------------------
 # DATE DIMENSION
 # -----------------------------
-df["date"] = pd.to_datetime(df["invoicedate"]).dt.normalize()
 
-dim_date = pd.DataFrame()
+dim_date = pd.DataFrame({
+    "date": pd.to_datetime(sorted(df["date"].unique()))
+})
 
-dim_date["date"] = pd.to_datetime(df["date"].unique())
-dim_date["date"] = dim_date["date"].dt.normalize()
-
+# Create surrogate key
 dim_date["date_id"] = range(1, len(dim_date) + 1)
 
+# Extract attributes
 dim_date["year"] = dim_date["date"].dt.year
 dim_date["month"] = dim_date["date"].dt.month
 dim_date["day"] = dim_date["date"].dt.day
@@ -92,7 +101,7 @@ fact_sales = fact[[
     "revenue"
 ]]
 
-# Rename columns for warehouse standard
+# Rename columns for warehouse format
 fact_sales = fact_sales.rename(columns={
     "invoiceno": "invoice_no",
     "customerid": "customer_id",
