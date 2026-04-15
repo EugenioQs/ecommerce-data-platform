@@ -5,6 +5,8 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+python/fix_customers_csv.py
+python/profile_data.py
 
 # Virtual environments
 venv/

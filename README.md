@@ -2,13 +2,11 @@
 
 ## Project Overview
 
-This project simulates a real-world **data analytics workflow** by transforming raw transactional data into a structured **data warehouse** designed for business intelligence and analytical queries.
+This project simulates a real-world **data engineering and analytics workflow** by transforming raw transactional data into a structured **cloud data warehouse** designed for business intelligence and analytical queries.
 
-The goal of this project is to demonstrate how raw operational data can be transformed into a structured model that supports business decision-making.
+The project covers the full pipeline:
 
-The project covers the full analytics pipeline:
-
-Raw Data → Data Cleaning → Data Modeling → Data Warehouse → Business Analysis
+Raw Data → Data Cleaning → Star Schema Modeling → S3 (Data Lake) → Redshift (Data Warehouse) → SQL Analytics
 
 ---
 
@@ -22,220 +20,145 @@ The full business context and objectives can be found here:
 
 ---
 
-## Key Business Insights
-
-Using the data warehouse and SQL analytics layer, several key insights can be extracted from the e-commerce dataset.
-
-### Revenue Performance
-
-The platform generates revenue across multiple international markets. By aggregating sales by country, it is possible to identify which regions contribute the most to total revenue and where expansion opportunities may exist.
-
-### Product Performance
-
-Analysis of product sales reveals that a small subset of products drives the majority of sales volume and revenue. This suggests the presence of high-demand products that may benefit from inventory prioritization and targeted promotions.
-
-### Customer Value
-
-Customer lifetime value analysis shows that a limited number of customers contribute significantly to total revenue. Identifying and retaining these high-value customers is essential for long-term profitability.
-
-### Customer Retention
-
-By comparing repeat customers versus one-time buyers, the dataset allows the measurement of customer retention. A higher proportion of repeat buyers indicates stronger customer loyalty and healthier long-term growth.
-
-### Sales Trends Over Time
-
-Monthly revenue trends allow the business to identify seasonality patterns and periods of increased demand, enabling better planning for inventory, marketing campaigns, and staffing.
-
----
-
-## Data Pipeline Architecture
-
-The project simulates a simplified modern analytics workflow, transforming raw transactional data into a structured warehouse for analysis.
-
-![Pipeline Architecture](assets/pipeline_architecture.png)
-
----
-
-## Dataset
-
-The project uses the **Online Retail dataset**, which contains transactions from a UK-based e-commerce store.
-
-Main attributes include:
-
-- Invoice number
-- Product code and description
-- Quantity purchased
-- Unit price
-- Customer ID
-- Country
-- Invoice date
-
-The dataset contains over **540,000 transactions**, making it suitable for simulating a real analytical workload.
-
----
-
 ## Architecture
 
-The project follows a simplified modern analytics workflow:
-
-Raw Dataset (Excel)
-↓
-Python Data Cleaning
-↓
-Star Schema Modeling
-↓
-MySQL Data Warehouse
-↓
-SQL Analytics Queries
-↓
-BI Visualization (future step)
-
-This architecture mirrors the structure used in many real data teams where data is transformed into analytical models before being consumed by BI tools.
+```
+datasets/raw/online_retail.xlsx
+        ↓  prepare_data.py
+datasets/raw/orders.csv
+        ↓  build_star_schema.py
+datasets/processed/
+  dim_products.csv
+  dim_customers.csv
+  dim_country.csv
+  dim_date.csv
+  fact_sales.csv
+        ↓  load_to_redshift.py
+Amazon S3 — s3://ecommerce-data-platform-eugenioqs-2026/star-schema/
+        ↓  COPY command
+Amazon Redshift Serverless (dev database)
+  dim_products   — 3,916 rows
+  dim_customers  — 4,372 rows
+  dim_country    — 37 rows
+  dim_date       — 305 rows
+  fact_sales     — 406,829 rows
+        ↓  run_queries.py
+SQL Analytics (10 business queries)
+```
 
 ---
 
 ## Data Model
 
-The data warehouse follows a **Star Schema design**, which separates transactional data into a central fact table and multiple dimension tables.
+The data warehouse follows a **Star Schema design**.
 
 ![Star Schema](assets/star_schema_ecommerce.png)
 
-The star schema separates transactional data into a **central fact table** containing measurable business events and multiple **dimension tables** that provide descriptive context.
-
-This structure improves analytical performance and simplifies SQL queries used for reporting and dashboards.
-
 ### Fact Table
 
-**fact_sales**
+**fact_sales** — 406,829 transactional records
 
-Contains transactional sales data.
-
-Columns:
-
-- invoice_no
-- product_id
-- customer_id
-- date_id
-- country_id
-- quantity
-- unit_price
-- revenue
+| Column | Type |
+|--------|------|
+| invoice_no | VARCHAR(20) |
+| product_id | INT |
+| customer_id | INT |
+| country_id | INT |
+| date_id | INT |
+| quantity | INT |
+| unit_price | DECIMAL(10,2) |
+| revenue | DECIMAL(10,2) |
 
 ### Dimension Tables
 
-**dim_products**
-
-- product_id
-- stockcode
-- description
-
-**dim_customers**
-
-- customer_id
-
-**dim_country**
-
-- country_id
-- country
-
-**dim_date**
-
-- date_id
-- date
-- year
-- month
-- day
-- weekday
+| Table | Key Column | Rows |
+|-------|-----------|------|
+| dim_products | product_id | 3,916 |
+| dim_customers | customer_id | 4,372 |
+| dim_country | country_id | 37 |
+| dim_date | date_id | 305 |
 
 ---
 
 ## Tech Stack
 
-This project uses a combination of data engineering and analytics tools:
+| Layer | Technology |
+|-------|-----------|
+| Data Processing | Python, Pandas |
+| Data Lake | Amazon S3 |
+| Data Warehouse | Amazon Redshift Serverless |
+| Analytics | SQL |
+| Version Control | Git / GitHub |
 
-- Python
-- Pandas
-- MySQL
-- SQL
-- Git / GitHub
+---
 
-Future improvements may include:
+## Key Business Insights
 
-- Power BI or Tableau dashboards
-- dbt transformations
-- Cloud data warehouse (Redshift / BigQuery / Snowflake)
+### Revenue Performance
+- **United Kingdom** dominates with $6.7M revenue — 10x the next country (Netherlands at $284K)
+- Top product by revenue: **REGENCY CAKESTAND 3 TIER** at $132K
+
+### Customer Behavior
+- **70% of customers are repeat buyers** (3,059 repeat vs 1,313 one-time)
+- Average order value: **$374**
+- Top customer (ID 14646): $279K lifetime value across 77 orders
+
+### Sales Trends
+- Revenue peaks in **Q4** — November 2011 was the highest month at $1.13M
+- Clear seasonality: sales accelerate from September through November
 
 ---
 
 ## Project Structure
 
 ```
-ecommerce-data-platform
+ecommerce-data-platform/
 │
-├── assets
+├── assets/
 │   ├── pipeline_architecture.png
 │   └── star_schema_ecommerce.png
 │
-├── datasets
-│   └── sample
+├── datasets/
+│   └── sample/
 │       └── fact_sales_sample.csv
 │
-├── python
-│   ├── prepare_data.py
-│   ├── build_star_schema.py
-│   ├── fix_customers_csv.py
-│   ├── profile_data.py
-│   └── fact_sales_sample.py
+├── python/
+│   ├── prepare_data.py          # Excel → CSV
+│   ├── build_star_schema.py     # CSV → Star Schema
+│   ├── load_to_redshift.py      # S3 + Redshift load
+│   └── run_queries.py           # Business analytics queries
 │
-├── sql
-│   ├── create_tables.sql
-│   └── business_queries.sql
+├── sql/
+│   ├── create_tables.sql        # Redshift DDL
+│   └── business_queries.sql     # 10 analytical queries
 │
 ├── business_case.md
+├── CLAUDE.md
 └── README.md
 ```
 
 ---
 
-## Key Business Questions
+## How to Run
 
-The data warehouse enables answering several analytical questions relevant for business decision-making:
-
-- Which countries generate the highest revenue?
-- Which products contribute most to sales?
-- Who are the highest-value customers?
-- How does revenue evolve over time?
-- What are the monthly sales trends?
-
----
-
-## Example Analytical Query
-
-Example query to calculate revenue by country:
-
-```sql
-SELECT
-c.country,
-SUM(f.revenue) AS revenue
-FROM fact_sales f
-JOIN dim_country c
-ON f.country_id = c.country_id
-GROUP BY c.country
-ORDER BY revenue DESC;
+### 1. Install dependencies
+```bash
+pip install pandas openpyxl redshift-connector boto3
 ```
 
-This query demonstrates how the star schema simplifies analytical queries by joining fact and dimension tables.
+### 2. Configure AWS credentials
+```bash
+aws configure
+```
 
----
-
-## Future Improvements
-
-The following improvements will extend the project toward a modern analytics stack:
-
-- Build a BI dashboard using **Power BI or Tableau**
-- Implement transformations using **dbt**
-- Deploy the warehouse in a **cloud environment**
-- Automate the data pipeline
+### 3. Run the pipeline
+```bash
+cd python
+python prepare_data.py        # Convert Excel to CSV
+python build_star_schema.py   # Build star schema CSVs
+python load_to_redshift.py    # Upload to S3 and load into Redshift
+python run_queries.py         # Run business analytics queries
+```
 
 ---
 

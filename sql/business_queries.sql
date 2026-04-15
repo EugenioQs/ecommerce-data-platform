@@ -1,4 +1,4 @@
-# /*
+/*
 
 E-Commerce Analytics Queries
 Project: Ecommerce Data Platform
@@ -25,12 +25,12 @@ Which countries generate the most revenue?
 ======================================== */
 
 SELECT
-c.country_name,
+c.country,
 SUM(f.revenue) AS revenue
 FROM fact_sales f
 JOIN dim_country c
 ON f.country_id = c.country_id
-GROUP BY c.country_name
+GROUP BY c.country
 ORDER BY revenue DESC;
 
 /* ========================================
@@ -40,12 +40,12 @@ Which products are the most popular?
 ======================================== */
 
 SELECT
-p.product_name,
+p.description,
 SUM(f.quantity) AS total_units_sold
 FROM fact_sales f
 JOIN dim_products p
 ON f.product_id = p.product_id
-GROUP BY p.product_name
+GROUP BY p.description
 ORDER BY total_units_sold DESC
 LIMIT 10;
 
@@ -56,12 +56,12 @@ Which products generate the most revenue?
 ======================================== */
 
 SELECT
-p.product_name,
+p.description,
 SUM(f.revenue) AS revenue
 FROM fact_sales f
 JOIN dim_products p
 ON f.product_id = p.product_id
-GROUP BY p.product_name
+GROUP BY p.description
 ORDER BY revenue DESC
 LIMIT 10;
 
@@ -120,12 +120,12 @@ Which countries generate the most orders?
 ======================================== */
 
 SELECT
-c.country_name,
+c.country,
 COUNT(DISTINCT f.invoice_no) AS total_orders
 FROM fact_sales f
 JOIN dim_country c
 ON f.country_id = c.country_id
-GROUP BY c.country_name
+GROUP BY c.country
 ORDER BY total_orders DESC;
 
 /* ========================================
