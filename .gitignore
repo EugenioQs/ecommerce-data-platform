@@ -46,6 +46,7 @@ Thumbs.db
 # Claude Code
 # =========================
 .claude/
+CLAUDE.md
 
 # =========================
 # Backup / scratch files
