@@ -6,7 +6,23 @@ This project simulates a real-world **data engineering and analytics workflow** 
 
 The project covers the full pipeline:
 
-Raw Data → Data Cleaning → Star Schema Modeling → S3 (Data Lake) → Redshift (Data Warehouse) → SQL Analytics
+Raw Data → Data Cleaning → Star Schema Modeling → S3 (Data Lake) → Redshift (Data Warehouse) → SQL Analytics → Power BI Dashboard
+
+---
+
+## Dashboard
+
+### Executive Overview
+![Executive Overview](visuals/Overview.png)
+
+### Products
+![Products](visuals/Products.png)
+
+### Customers
+![Customers](visuals/Customers.png)
+
+### Geography
+![Geography](visuals/Geography.png)
 
 ---
 
@@ -42,8 +58,8 @@ Amazon Redshift Serverless (dev database)
   dim_country    — 37 rows
   dim_date       — 305 rows
   fact_sales     — 406,829 rows
-        ↓  run_queries.py
-SQL Analytics (10 business queries)
+        ↓  run_queries.py / Power BI
+SQL Analytics + Power BI Dashboard (4 pages)
 ```
 
 ---
@@ -88,6 +104,7 @@ The data warehouse follows a **Star Schema design**.
 | Data Lake | Amazon S3 |
 | Data Warehouse | Amazon Redshift Serverless |
 | Analytics | SQL |
+| Dashboard | Power BI |
 | Version Control | Git / GitHub |
 
 ---
@@ -95,7 +112,8 @@ The data warehouse follows a **Star Schema design**.
 ## Key Business Insights
 
 ### Revenue Performance
-- **United Kingdom** dominates with $6.7M revenue — 10x the next country (Netherlands at $284K)
+- **Total Net Revenue: $8.3M** (includes returns/cancellations with negative revenue)
+- **United Kingdom** dominates with $6.8M revenue — 10x the next country (Netherlands at $285K)
 - Top product by revenue: **REGENCY CAKESTAND 3 TIER** at $132K
 
 ### Customer Behavior
@@ -104,7 +122,7 @@ The data warehouse follows a **Star Schema design**.
 - Top customer (ID 14646): $279K lifetime value across 77 orders
 
 ### Sales Trends
-- Revenue peaks in **Q4** — November 2011 was the highest month at $1.13M
+- Revenue peaks in **Q4** — November 2011 was the highest month at $1.1M
 - Clear seasonality: sales accelerate from September through November
 
 ---
@@ -122,18 +140,26 @@ ecommerce-data-platform/
 │   └── sample/
 │       └── fact_sales_sample.csv
 │
+├── powerbi/
+│   ├── ecommerceBI.pbix            # Power BI dashboard (4 pages)
+│   ├── ecommerce-theme.json        # Dark theme
+│   ├── template-executive.svg      # Executive Overview background
+│   ├── template-products.svg       # Products background
+│   ├── template-customers.svg      # Customers background
+│   ├── template-geography.svg      # Geography background
+│   └── design-guide.md             # Design system reference
+│
 ├── python/
-│   ├── prepare_data.py          # Excel → CSV
-│   ├── build_star_schema.py     # CSV → Star Schema
-│   ├── load_to_redshift.py      # S3 + Redshift load
-│   └── run_queries.py           # Business analytics queries
+│   ├── prepare_data.py             # Excel → CSV
+│   ├── build_star_schema.py        # CSV → Star Schema
+│   ├── load_to_redshift.py         # S3 + Redshift load
+│   └── run_queries.py              # Business analytics queries
 │
 ├── sql/
-│   ├── create_tables.sql        # Redshift DDL
-│   └── business_queries.sql     # 10 analytical queries
+│   ├── create_tables.sql           # Redshift DDL
+│   └── business_queries.sql        # 10 analytical queries
 │
 ├── business_case.md
-├── CLAUDE.md
 └── README.md
 ```
 
@@ -159,6 +185,11 @@ python build_star_schema.py   # Build star schema CSVs
 python load_to_redshift.py    # Upload to S3 and load into Redshift
 python run_queries.py         # Run business analytics queries
 ```
+
+### 4. Power BI Dashboard
+- Open `powerbi/ecommerceBI.pbix`
+- Connect to Redshift Serverless using database credentials
+- Theme is pre-configured via `ecommerce-theme.json`
 
 ---
 

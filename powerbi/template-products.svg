@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900">
+  <defs>
+    <style>
+      .h-title   { font-family: 'Segoe UI', sans-serif; font-size: 20px; font-weight: 700; fill: #F1F5F9; }
+      .h-sub     { font-family: 'Segoe UI', sans-serif; font-size: 12px; fill: #64748B; }
+      .s-title   { font-family: 'Segoe UI', sans-serif; font-size: 13px; font-weight: 600; fill: #F1F5F9; }
+      .s-sub     { font-family: 'Segoe UI', sans-serif; font-size: 10px; fill: #64748B; }
+      .kpi-label { font-family: 'Segoe UI', sans-serif; font-size: 11px; fill: #64748B; }
+      .ph        { font-family: 'Segoe UI', sans-serif; font-size: 12px; font-style: italic; fill: #374151; }
+    </style>
+  </defs>
+
+  <!-- ── Background ───────────────────────────────────────── -->
+  <rect width="1440" height="900" fill="#0F1117"/>
+
+  <!-- ── Header ───────────────────────────────────────────── -->
+  <rect x="0" y="0" width="1440" height="66" fill="#141924"/>
+  <rect x="0" y="0" width="4"    height="66" fill="#38BDF8"/>
+  <text x="24" y="28" class="h-title">Ecommerce Data Platform</text>
+  <text x="24" y="50" class="h-sub">Products</text>
+  <rect x="0" y="66" width="1440" height="2" fill="#38BDF8" opacity="0.35"/>
+
+  <!-- ── KPI Cards (y=76 h=120) ───────────────────────────── -->
+
+  <!-- KPI 1 — Unique Products -->
+  <rect x="20"  y="76" width="690" height="120" rx="3" fill="#1E2435"/>
+  <rect x="20"  y="192" width="690" height="4"         fill="#38BDF8"/>
+  <text x="365" y="138" class="kpi-label" text-anchor="middle">Unique Products</text>
+
+  <!-- KPI 2 — Total Units Sold -->
+  <rect x="730" y="76" width="690" height="120" rx="3" fill="#1E2435"/>
+  <rect x="730" y="192" width="690" height="4"         fill="#F59E0B"/>
+  <text x="1075" y="138" class="kpi-label" text-anchor="middle">Total Units Sold</text>
+
+  <!-- ── Charts Row (y=206 h=674) ─────────────────────────── -->
+
+  <!-- Bar Chart — Top 10 Products by Revenue -->
+  <rect x="20"  y="206" width="690" height="674" rx="3" fill="#1A1F2C"/>
+  <rect x="20"  y="206" width="690" height="36"         fill="#141924"/>
+  <rect x="20"  y="206" width="3"   height="36"         fill="#38BDF8"/>
+  <text x="35"  y="222" class="s-title">Top 10 Products by Revenue</text>
+  <text x="35"  y="235" class="s-sub">Horizontal bar — sorted descending</text>
+  <text x="365" y="561" class="ph" text-anchor="middle">Bar Chart — Revenue per Product</text>
+
+  <!-- Bar Chart — Top 10 Products by Units Sold -->
+  <rect x="730"  y="206" width="690" height="674" rx="3" fill="#1A1F2C"/>
+  <rect x="730"  y="206" width="690" height="36"         fill="#141924"/>
+  <rect x="730"  y="206" width="3"   height="36"         fill="#F59E0B"/>
+  <text x="745"  y="222" class="s-title">Top 10 Products by Units Sold</text>
+  <text x="745"  y="235" class="s-sub">Horizontal bar — sorted descending</text>
+  <text x="1075" y="561" class="ph" text-anchor="middle">Bar Chart — Units per Product</text>
+</svg>

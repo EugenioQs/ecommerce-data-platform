@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900">
+  <defs>
+    <style>
+      .h-title   { font-family: 'Segoe UI', sans-serif; font-size: 20px; font-weight: 700; fill: #F1F5F9; }
+      .h-sub     { font-family: 'Segoe UI', sans-serif; font-size: 12px; fill: #64748B; }
+      .s-title   { font-family: 'Segoe UI', sans-serif; font-size: 13px; font-weight: 600; fill: #F1F5F9; }
+      .s-sub     { font-family: 'Segoe UI', sans-serif; font-size: 10px; fill: #64748B; }
+      .kpi-label { font-family: 'Segoe UI', sans-serif; font-size: 11px; fill: #64748B; }
+      .ph        { font-family: 'Segoe UI', sans-serif; font-size: 12px; font-style: italic; fill: #374151; }
+    </style>
+  </defs>
+
+  <!-- ── Background ───────────────────────────────────────── -->
+  <rect width="1440" height="900" fill="#0F1117"/>
+
+  <!-- ── Header ───────────────────────────────────────────── -->
+  <rect x="0" y="0" width="1440" height="66" fill="#141924"/>
+  <rect x="0" y="0" width="4"    height="66" fill="#38BDF8"/>
+  <text x="24" y="28" class="h-title">Ecommerce Data Platform</text>
+  <text x="24" y="50" class="h-sub">Geography</text>
+  <rect x="0" y="66" width="1440" height="2" fill="#38BDF8" opacity="0.35"/>
+
+  <!-- ── KPI Cards (y=76 h=120) ───────────────────────────── -->
+
+  <!-- KPI 1 — Total Revenue -->
+  <rect x="20"  y="76" width="690" height="120" rx="3" fill="#1E2435"/>
+  <rect x="20"  y="192" width="690" height="4"         fill="#38BDF8"/>
+  <text x="365" y="138" class="kpi-label" text-anchor="middle">Total Revenue</text>
+
+  <!-- KPI 2 — Countries Reached -->
+  <rect x="730" y="76" width="690" height="120" rx="3" fill="#1E2435"/>
+  <rect x="730" y="192" width="690" height="4"         fill="#F59E0B"/>
+  <text x="1075" y="138" class="kpi-label" text-anchor="middle">Countries Reached</text>
+
+  <!-- ── Map (y=206 h=420) ────────────────────────────────── -->
+
+  <rect x="20"  y="206" width="1400" height="420" rx="3" fill="#1A1F2C"/>
+  <rect x="20"  y="206" width="1400" height="36"         fill="#141924"/>
+  <rect x="20"  y="206" width="3"    height="36"         fill="#38BDF8"/>
+  <text x="35"  y="222" class="s-title">Revenue by Country</text>
+  <text x="35"  y="235" class="s-sub">Filled map — darker = higher revenue</text>
+  <text x="720" y="434" class="ph" text-anchor="middle">Filled Map — Revenue by Country</text>
+
+  <!-- ── Table (y=636 h=244) ──────────────────────────────── -->
+
+  <rect x="20"  y="636" width="1400" height="244" rx="3" fill="#1A1F2C"/>
+  <rect x="20"  y="636" width="1400" height="36"         fill="#141924"/>
+  <rect x="20"  y="636" width="3"    height="36"         fill="#F59E0B"/>
+  <text x="35"  y="652" class="s-title">Country Breakdown</text>
+  <text x="35"  y="665" class="s-sub">Country · Revenue · Total Orders — conditional formatting</text>
+  <text x="720" y="776" class="ph" text-anchor="middle">Table — Country · Revenue · Total Orders</text>
+</svg>

@@ -1,0 +1,66 @@
+{
+  "name": "Ecommerce Dark",
+  "dataColors": [
+    "#38BDF8",
+    "#F59E0B",
+    "#34D399",
+    "#A78BFA",
+    "#F87171",
+    "#67E8F9",
+    "#FCD34D",
+    "#6EE7B7"
+  ],
+  "background": "#0F1117",
+  "foreground": "#F1F5F9",
+  "tableAccent": "#38BDF8",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#1A1F2E" } }, "transparency": 0 }],
+        "border": [{ "show": false }],
+        "dropShadow": [{ "show": false }]
+      }
+    },
+    "card": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#1E2435" } }, "transparency": 0 }],
+        "border": [{ "show": false }],
+        "calloutValue": [{ "fontSize": 28, "fontBold": true, "color": { "solid": { "color": "#F1F5F9" } } }],
+        "categoryLabel": [{ "fontSize": 11, "color": { "solid": { "color": "#64748B" } }, "show": true }]
+      }
+    },
+    "lineChart": {
+      "*": {
+        "lineStyles": [{ "strokeWidth": 2 }],
+        "plotArea": [{ "gridlines": { "show": false } }]
+      }
+    },
+    "barChart": {
+      "*": {
+        "plotArea": [{ "gridlines": { "show": false } }]
+      }
+    },
+    "columnChart": {
+      "*": {
+        "plotArea": [{ "gridlines": { "show": false } }]
+      }
+    }
+  },
+  "textClasses": {
+    "title": {
+      "fontSize": 14,
+      "fontFace": "Segoe UI",
+      "color": "#F1F5F9"
+    },
+    "header": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI",
+      "color": "#94A3B8"
+    },
+    "label": {
+      "fontSize": 10,
+      "fontFace": "Segoe UI",
+      "color": "#94A3B8"
+    }
+  }
+}

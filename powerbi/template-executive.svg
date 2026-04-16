@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900">
+  <defs>
+    <style>
+      .h-title   { font-family: 'Segoe UI', sans-serif; font-size: 20px; font-weight: 700; fill: #F1F5F9; }
+      .h-sub     { font-family: 'Segoe UI', sans-serif; font-size: 12px; fill: #64748B; }
+      .s-title   { font-family: 'Segoe UI', sans-serif; font-size: 13px; font-weight: 600; fill: #F1F5F9; }
+      .s-sub     { font-family: 'Segoe UI', sans-serif; font-size: 10px; fill: #64748B; }
+      .kpi-label { font-family: 'Segoe UI', sans-serif; font-size: 11px; fill: #64748B; }
+      .ph        { font-family: 'Segoe UI', sans-serif; font-size: 12px; font-style: italic; fill: #374151; }
+    </style>
+  </defs>
+
+  <!-- ── Background ───────────────────────────────────────── -->
+  <rect width="1440" height="900" fill="#0F1117"/>
+
+  <!-- ── Header ───────────────────────────────────────────── -->
+  <rect x="0" y="0" width="1440" height="66" fill="#141924"/>
+  <rect x="0" y="0" width="4"    height="66" fill="#38BDF8"/>
+  <text x="24" y="28" class="h-title">Ecommerce Data Platform</text>
+  <text x="24" y="50" class="h-sub">Executive Overview</text>
+  <rect x="0" y="66" width="1440" height="2" fill="#38BDF8" opacity="0.35"/>
+
+  <!-- ── KPI Cards (y=76 h=120) ───────────────────────────── -->
+
+  <!-- KPI 1 — Total Revenue -->
+  <rect x="20"   y="76" width="341" height="120" rx="3" fill="#1E2435"/>
+  <rect x="20"   y="192" width="341" height="4"         fill="#38BDF8"/>
+  <text x="190"  y="138" class="kpi-label" text-anchor="middle">Total Revenue</text>
+
+  <!-- KPI 2 — Total Orders -->
+  <rect x="373"  y="76" width="341" height="120" rx="3" fill="#1E2435"/>
+  <rect x="373"  y="192" width="341" height="4"         fill="#F59E0B"/>
+  <text x="543"  y="138" class="kpi-label" text-anchor="middle">Total Orders</text>
+
+  <!-- KPI 3 — Total Customers -->
+  <rect x="726"  y="76" width="341" height="120" rx="3" fill="#1E2435"/>
+  <rect x="726"  y="192" width="341" height="4"         fill="#34D399"/>
+  <text x="896"  y="138" class="kpi-label" text-anchor="middle">Total Customers</text>
+
+  <!-- KPI 4 — Avg Order Value -->
+  <rect x="1079" y="76" width="341" height="120" rx="3" fill="#1E2435"/>
+  <rect x="1079" y="192" width="341" height="4"         fill="#A78BFA"/>
+  <text x="1249" y="138" class="kpi-label" text-anchor="middle">Avg Order Value</text>
+
+  <!-- ── Charts Row (y=206 h=350) ─────────────────────────── -->
+
+  <!-- Line Chart — Monthly Revenue Trend -->
+  <rect x="20"  y="206" width="680" height="350" rx="3" fill="#1A1F2C"/>
+  <rect x="20"  y="206" width="680" height="36"         fill="#141924"/>
+  <rect x="20"  y="206" width="3"   height="36"         fill="#38BDF8"/>
+  <text x="35"  y="222" class="s-title">Revenue Trend</text>
+  <text x="35"  y="235" class="s-sub">Monthly — 2010 to 2011</text>
+  <text x="360" y="399" class="ph" text-anchor="middle">Line Chart — Monthly Revenue</text>
+
+  <!-- Bar Chart — Revenue by Country -->
+  <rect x="720"  y="206" width="700" height="350" rx="3" fill="#1A1F2C"/>
+  <rect x="720"  y="206" width="700" height="36"         fill="#141924"/>
+  <rect x="720"  y="206" width="3"   height="36"         fill="#F59E0B"/>
+  <text x="735"  y="222" class="s-title">Revenue by Country</text>
+  <text x="735"  y="235" class="s-sub">Top 5 — Horizontal bar</text>
+  <text x="1070" y="399" class="ph" text-anchor="middle">Bar Chart — Top 5 Countries</text>
+
+  <!-- ── Bottom Row (y=566 h=314) ─────────────────────────── -->
+
+  <!-- Donut — Customer Segments -->
+  <rect x="20"  y="566" width="460" height="314" rx="3" fill="#1A1F2C"/>
+  <rect x="20"  y="566" width="460" height="36"         fill="#141924"/>
+  <rect x="20"  y="566" width="3"   height="36"         fill="#34D399"/>
+  <text x="35"  y="582" class="s-title">Customer Segments</text>
+  <text x="35"  y="595" class="s-sub">Repeat vs One-Time Customers</text>
+  <text x="250" y="740" class="ph" text-anchor="middle">Donut Chart</text>
+
+  <!-- Key Insights / Cards -->
+  <rect x="500"  y="566" width="920" height="314" rx="3" fill="#1A1F2C"/>
+  <rect x="500"  y="566" width="920" height="36"         fill="#141924"/>
+  <rect x="500"  y="566" width="3"   height="36"         fill="#A78BFA"/>
+  <text x="515"  y="582" class="s-title">Monthly Orders Trend</text>
+  <text x="515"  y="595" class="s-sub">Order volume by month — 2010 to 2011</text>
+  <text x="960"  y="740" class="ph" text-anchor="middle">Bar Chart — Total Orders per Month</text>
+</svg>
