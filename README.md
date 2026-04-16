@@ -133,13 +133,8 @@ ecommerce-data-platform/
 │       └── fact_sales_sample.csv
 │
 ├── powerbi/
-│   ├── ecommerceBI.pbix            # Power BI dashboard (4 pages)
-│   ├── ecommerce-theme.json        # Dark theme
-│   ├── template-executive.svg      # Executive Overview background
-│   ├── template-products.svg       # Products background
-│   ├── template-customers.svg      # Customers background
-│   ├── template-geography.svg      # Geography background
-│   └── design-guide.md             # Design system reference
+│   ├── Ecommerce_Data_Platform.pbix  # Power BI dashboard (4 pages)
+│   └── ecommerce-theme.json          # Dark theme
 │
 ├── python/
 │   ├── prepare_data.py             # Excel → CSV
@@ -151,7 +146,6 @@ ecommerce-data-platform/
 │   ├── create_tables.sql           # Redshift DDL
 │   └── business_queries.sql        # 10 analytical queries
 │
-├── business_case.md
 └── README.md
 ```
 
@@ -179,7 +173,7 @@ python run_queries.py         # Run business analytics queries
 ```
 
 ### 4. Power BI Dashboard
-- Open `powerbi/ecommerceBI.pbix`
+- Open `powerbi/Ecommerce_Data_Platform.pbix`
 - Connect to Redshift Serverless using database credentials
 - Theme is pre-configured via `ecommerce-theme.json`
 
