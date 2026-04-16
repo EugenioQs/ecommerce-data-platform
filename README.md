@@ -12,7 +12,7 @@ Raw Data → Data Cleaning → Star Schema Modeling → S3 (Data Lake) → Redsh
 
 ## Dashboard
 
-**[Ver dashboard en vivo →](https://app.powerbi.com/view?r=eyJrIjoiZDRkOGNmNjItMzQ0ZS00NDg0LThhMzMtYjUzOTA0YmVlYjRkIiwidCI6ImIwNzdiNmU1LWQyYWEtNDRhNS1hNGI2LTIxMmVmMWMwMTEwMSJ9)**
+**[View live dashboard →](https://app.powerbi.com/view?r=eyJrIjoiZDRkOGNmNjItMzQ0ZS00NDg0LThhMzMtYjUzOTA0YmVlYjRkIiwidCI6ImIwNzdiNmU1LWQyYWEtNDRhNS1hNGI2LTIxMmVmMWMwMTEwMSJ9)**
 
 ### Executive Overview
 ![Executive Overview](visuals/Overview.png)
