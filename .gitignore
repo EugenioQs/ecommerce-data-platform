@@ -49,6 +49,12 @@ Thumbs.db
 CLAUDE.md
 
 # =========================
+# Power BI internal design files
+# =========================
+powerbi/template-*.svg
+powerbi/design-guide.md
+
+# =========================
 # Backup / scratch files
 # =========================
 *copia*

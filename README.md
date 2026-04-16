@@ -12,6 +12,8 @@ Raw Data → Data Cleaning → Star Schema Modeling → S3 (Data Lake) → Redsh
 
 ## Dashboard
 
+**[Ver dashboard en vivo →](https://app.powerbi.com/view?r=eyJrIjoiZDRkOGNmNjItMzQ0ZS00NDg0LThhMzMtYjUzOTA0YmVlYjRkIiwidCI6ImIwNzdiNmU1LWQyYWEtNDRhNS1hNGI2LTIxMmVmMWMwMTEwMSJ9)**
+
 ### Executive Overview
 ![Executive Overview](visuals/Overview.png)
 
@@ -23,16 +25,6 @@ Raw Data → Data Cleaning → Star Schema Modeling → S3 (Data Lake) → Redsh
 
 ### Geography
 ![Geography](visuals/Geography.png)
-
----
-
-## Business Case
-
-This project is based on a simulated e-commerce analytics scenario.
-
-The full business context and objectives can be found here:
-
-[View the Business Case](business_case.md)
 
 ---
 
